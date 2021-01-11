@@ -1,0 +1,7 @@
+.topBar {
+  width: 100%;
+  display: block;
+  min-height: 35px;
+  height: auto;
+  background-color: #252525;
+}
