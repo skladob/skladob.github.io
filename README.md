@@ -1,1 +1,1 @@
-# skladob.github.io
+# https://skladob.github.io
