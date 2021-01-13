@@ -1,7 +1,21 @@
 import link_extractor
 
-site = "https://sivik.ru"
 
-links = link_extractor.getLinks(site)
+def get_link(url):
+    links = link_extractor.getLinks(url)
+    for link in links:
+        result = link_extractor.getLinks(link)
+        for a in result:
+            print(a)
 
-print(links)
+
+
+
+
+
+
+
+
+
+if __name__ == "__main__":
+    get_link('https://sivik.ru')
