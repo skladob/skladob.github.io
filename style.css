@@ -17,16 +17,11 @@ body {
 }
 .menu {
     display: block;
+    max-width: 1240px;
+    margin-left: auto;
+    margin-right: auto;
     min-height: 35px;
     height: auto;
-}
-.logo {
-    display: block;
-    display: inline-block;
-    max-height: 56px;
-    max-width: 225px;
-    padding: 8px 4px 8px 12px;
-    vertical-align: middle;
 }
 .article {
     position: absolute;
@@ -34,7 +29,7 @@ body {
     left: 0px;
     right: 0px;
     display: block;
-    width: 1240px;
+    max-width: 1240px;
     margin-left: auto;
     margin-right: auto;
 }
