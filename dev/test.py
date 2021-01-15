@@ -5,12 +5,14 @@ import sqlite3
 
 import link_extractor
 
+
 url = 'https://sivik.ru'
-query = 'INSERT INTO tmplinks VALUES(links)'
+query = 'INSERT INTO links VALUES(links)'
 
 links = link_extractor.getLinks(url)
 print(links)
 connect = sqlite3.connect('newDataBase.db')
+connect.row_factory
 cursor = connect.cursor()
 cursor.execute("""CREATE TABLE IF NOT EXISTS links(links TEXT)""")
 connect.commit()
