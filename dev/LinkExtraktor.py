@@ -2,9 +2,12 @@ import re
 import sqlite3
 
 import link_extractor
+import os
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+BASE_URL = 'https://sivik.ru'
 SQL_file = 'dev/newDataBase.db'
-QUERY_reader_host = 'SELECT host FROM Manufacturers'
+QUERY = 'INSERT INTO href VALUES (?)'
 
 
 def create_connection(connection):
@@ -18,28 +21,27 @@ def create_connection(connection):
         print("Ошибка при работе с SQLite", error)
 
 
-def reading_from_base(connection, query):
-    cursor = create_connection(connection)
-    cursor.execute(query)
-    for result in cursor:
-        print(result)
+def get_links(url):
+    links = link_extractor.getLinks(url)
+    cursor = create_connection(SQL_file)
+    for link in links:
+        result = link_extractor.getLinks(link)
+        for a in result:
+            cursor.execute(QUERY, a)
+
+get_links(BASE_URL)
 
 
 
 
 
+# def reading_from_base(connection, query):
+#     cursor = create_connection(connection)
+#     cursor.execute(query)
+#     for result in cursor:
+#         print(result)
 
 
-
-    # for row in cursor.fetchone():
-    #     # return row
-    #     links = link_extractor.getLinks(row)
-    #     for link in links:
-    #         result = link_extractor.getLinks(link)
-    #         for a in result:
-    #             print(a)
-
-
-if __name__ == "__main__":
-    reading_from_base(SQL_file, QUERY_reader_host)
-    # print (row)
+# if __name__ == "__main__":
+#     reading_from_base(SQL_file, QUERY_reader_host)
+#     # print (row)
