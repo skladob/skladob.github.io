@@ -5,16 +5,16 @@ import sqlite3
 
 import link_extractor
 
-
+ 
 url = 'https://sivik.ru'
-query = 'INSERT INTO links VALUES(links)'
+query = 'INSERT INTO href VALUES (site)'
 
 links = link_extractor.getLinks(url)
 print(links)
 connect = sqlite3.connect('newDataBase.db')
 connect.row_factory
 cursor = connect.cursor()
-cursor.execute("""CREATE TABLE IF NOT EXISTS links(links TEXT)""")
+cursor.execute("""CREATE TABLE IF NOT EXISTS href(site TEXT)""")
 connect.commit()
 for data_links in links:
     cursor.execute(query, data_links)
