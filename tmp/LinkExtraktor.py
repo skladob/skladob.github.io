@@ -7,7 +7,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_URL = 'https://sivik.ru'
 SQL_file = 'dev/newDataBase.db'
-QUERY = 'INSERT INTO href VALUES (?)'
+QUERY = 'INSERT INTO href VALUES (?);'
 
 
 def create_connection(connection):
@@ -25,9 +25,10 @@ def get_links(url):
     links = link_extractor.getLinks(url)
     cursor = create_connection(SQL_file)
     for link in links:
-        result = link_extractor.getLinks(link)
-        for a in result:
-            cursor.execute(QUERY, a)
+        i = "'" + link + "'"
+        print(type(i))
+        print(i)
+        cursor.execute(QUERY, 'https://sivik.ru/catalog/balansirovochnoe_oborudovanie/')
 
 get_links(BASE_URL)
 
