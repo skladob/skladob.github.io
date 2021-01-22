@@ -9,8 +9,8 @@
 
 <channel>
 	<title>SKLADOB</title>
-	<atom:link href="/feed/" rel="self" type="application/rss+xml" />
-	<link></link>
+	<atom:link href="/http://skladob.github.io/feed/" rel="self" type="application/rss+xml" />
+	<link>/http://skladob.github.io</link>
 	<description></description>
 	<lastBuildDate>Fri, 22 Jan 2021 00:23:04 +0000</lastBuildDate>
 	<language>ru-RU</language>
